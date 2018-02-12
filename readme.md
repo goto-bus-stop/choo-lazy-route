@@ -3,8 +3,9 @@
 ```js
 var app = choo()
 var splitRequire = require('split-require')
-var lazyRoute = require('choo-lazy-route')(app)
+var lazyRoute = require('choo-lazy-route')()
 
+app.use(lazyRoute)
 app.route('/lazy-route', lazyRoute(function (cb) {
   splitRequire('./views/lazyView', cb)
 }))
@@ -12,7 +13,11 @@ app.route('/lazy-route', lazyRoute(function (cb) {
 
 ## API
 
-### `lazyRoute = require('choo-lazy-route')(app)`
+### `lazyRoute = require('choo-lazy-route')()`
+
+### `app.use(lazyRoute)`
+
+### `app.route('/', lazyRoute(function () {}))`
 
 ## todo
 

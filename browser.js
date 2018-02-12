@@ -4,9 +4,16 @@ var IDLE = 0
 var LOADING = 1
 var LOADED = 2
 
-module.exports = function (app, defaultTagName) {
-  defaultTagName = defaultTagName || 'body'
-  return function lazyRoute (load) {
+module.exports = function () {
+  var app
+  var defaultTagName = 'body'
+
+  store.storeName = 'choo-lazy-route'
+  function store (state, emitter, _app) {
+    app = _app
+  }
+
+  function route (load) {
     if (typeof load !== 'function') {
       throw new TypeError('choo-lazy-route: load must be a function')
     }
@@ -58,4 +65,13 @@ module.exports = function (app, defaultTagName) {
       }
     }
   }
+
+  function lazy (a, b, c) {
+    if (arguments.length === 3) return store(a, b, c)
+    return route(a)
+  }
+
+  lazy.store = store
+  lazy.route = route
+  return lazy
 }

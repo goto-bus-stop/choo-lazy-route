@@ -4,10 +4,14 @@ var IDLE = 0
 var LOADING = 1
 var LOADED = 2
 
-module.exports = function (app) {
+module.exports = function () {
   var loaders = []
 
-  function lazyRoute (load) {
+  store.storeName = 'choo-lazy-route'
+  function store (state, emitter, _app) {
+  }
+
+  function route (load) {
     var view = null
     var loadingState = IDLE
 
@@ -41,12 +45,20 @@ module.exports = function (app) {
     }
   }
 
-  lazyRoute.all = function (cb) {
+  function loadAll (cb) {
     parallel(loaders, function (err) {
       if (err) cb(err)
       else cb()
     })
   }
 
-  return lazyRoute
+  function lazy (a, b, c) {
+    if (arguments.length === 3) return store(a, b, c)
+    return route(a)
+  }
+
+  lazy.store = store
+  lazy.route = route
+  lazy.all = loadAll
+  return lazy
 }
