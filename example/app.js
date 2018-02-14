@@ -11,5 +11,4 @@ app.route('/lazy-two', lazy(function (cb) {
   splitRequire('./views/lazyTwo', cb)
 }))
 
-module.exports = app
-if (typeof window !== 'undefined') app.mount('body')
+module.exports = app.mount('body')

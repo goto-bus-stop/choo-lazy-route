@@ -15,9 +15,9 @@
     "./index.js": "./browser.js"
   },
   "devDependencies": {
-    "bankai": "^9.4.1",
+    "bankai": "choojs/bankai#async-server-render",
     "choo": "^6.7.0",
-    "split-require": "^2.1.3",
+    "split-require": "^3.0.0",
     "standard": "^10.0.3",
     "tape": "^4.6.3"
   },
