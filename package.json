@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "bankai": "choojs/bankai#async-server-render",
-    "choo": "^6.7.0",
+    "choo": "^6.8.0",
     "split-require": "^3.0.0",
     "standard": "^10.0.3",
     "tape": "^4.6.3"

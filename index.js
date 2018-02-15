@@ -78,6 +78,7 @@ module.exports = function () {
   }
 
   lazy.store = store
+  lazy.storeName = store.storeName
   lazy.route = route
   lazy.all = loadAll
   return lazy
