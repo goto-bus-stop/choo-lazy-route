@@ -15,9 +15,15 @@ app.route('/lazy-route', lazyRoute(function (cb) {
 
 ### `lazyRoute = require('choo-lazy-route')()`
 
+Create an instance of the lazy route manager.
+
 ### `app.use(lazyRoute)`
 
-### `app.route('/', lazyRoute(function () {}))`
+Associate the lazy route manager with an app. The `lazyRoute` store also configures the app to take advantage of the experimental prefetch feature in bankai, so that server side rendering will include lazy routes.
+
+### `app.route('/', lazyRoute(function load() {}))`
+
+Create a lazy route. The `load` function can return a Promise or use the callback in its first parameter.
 
 ## todo
 
