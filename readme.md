@@ -25,6 +25,18 @@ Associate the lazy route manager with an app. The `lazyRoute` store also configu
 
 Create a lazy route. The `load` function can return a Promise or use the callback in its first parameter.
 
+### Events
+
+The lazy-route store emits the events listed below.
+
+#### `lazy-route:load(route)`
+
+Emitted when a route starts loading. `route` is a string.
+
+#### `lazy-route:loaded(route, view)`
+
+Emitted when a route has loaded successfully. `route` is a string. `view` is the view function that was loaded.
+
 ## todo
 
  - timeout

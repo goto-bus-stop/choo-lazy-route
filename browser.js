@@ -32,6 +32,7 @@ module.exports = function () {
     return function (state, emit) {
       // Begin loading the bundle on the first call
       if (loadingState === IDLE) {
+        emit('lazy-route:load', state.route)
         log.info('begin loading', state.route)
         route = state.route
         loadingState = LOADING
@@ -57,6 +58,7 @@ module.exports = function () {
           return
         }
         log.info('loaded', route)
+        emit('lazy-route:loaded', route, _view)
         loadingState = LOADED
         view = _view
 

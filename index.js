@@ -23,6 +23,9 @@ module.exports = function () {
     function doLoad (state, emit) {
       if (loadingState === LOADING) return promise
 
+      var route = state.route
+      emit('lazy-route:load', route)
+
       loadingState = LOADING
       promise = new Promise(function (resolve, reject) {
         var p = load(function (err, _view) {
@@ -30,6 +33,7 @@ module.exports = function () {
             loadingState = IDLE
             return reject(err)
           }
+          emit('lazy-route:loaded', route, _view)
           loadingState = LOADED
           view = _view
           resolve()
