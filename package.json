@@ -2,7 +2,7 @@
   "name": "choo-lazy-route",
   "description": "lazy load choo routes from split bundles",
   "repository": "choojs/choo-lazy-route",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "start": "node .",
     "test": "standard"
